@@ -53,5 +53,7 @@ def test_conf_file(get_spark_session_from_conf_file):
     assert "spark" in get_spark_session_from_conf_file
 
 
-
-
+Pytest - Parameterizing Tests
+------------------------------
+Parameterizing of a test is done to run the test against multiple sets of inputs. We can do this by using the following marker -
+@pytest.mark.parametrize
