@@ -24,11 +24,34 @@ All the test will be executed who is having marker great
 
 ----------------------------------------------
 Fixtures:
-Fixtures are functions, which will run before each test function to which it is applied. fixtures are used to feed some data to the tests
-such as database connections, URLs
+Fixtures are functions, which will run before each test function to which it is applied. Fixtures are used to feed some data to the tests
+such as database connections, URLs to test and some sort of input data. Therefore, instead of running the same code for every test,
+ we can attach fixture function to the tests and it will run and return the data to the test before executing each tests.
 
-Fixtures are functions, which will run before each test function to which it is applied. Fixtures are
- used to feed some data to the tests such as database connections, URLs to test and some sort of input data. Therefore, instead of running the same code for every test, we can attach fixture function to the tests and it will run and return the data to the test before executing each test.
+A function is marked as a fixture by −
+
+@pytest.fixture
+
+=========================Pytest - Conftest.py==========================================================
+
+We can define the fixture functions in this file to make them accessible across multiple test files.
+- We have to create conftest.py file inside the tests witl
+
+1. Create a new file conftest.py and add the below code into it −
+
+import pytest
+
+@pytest.fixture()
+def get_spark_session_from_conf_file():
+    spark = "This is spark session object"
+    return spark
+
+2. Using the conftest.py file in test_conf_file.py
+
+
+def test_conf_file(get_spark_session_from_conf_file):
+    assert "spark" in get_spark_session_from_conf_file
+
 
 
 
